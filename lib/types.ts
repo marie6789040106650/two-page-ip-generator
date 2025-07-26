@@ -11,6 +11,14 @@ export interface FormData {
   storeType?: string
   targetAudience?: string
   businessGoals?: string
+  // 为了兼容 generate-page-content.tsx，添加别名属性
+  name?: string
+  industry?: string
+  coreValue?: string
+  personalStory?: string
+  skills?: string[]
+  contentDirection?: string[]
+  platforms?: string[]
 }
 
 export interface ExpandedKeywords {

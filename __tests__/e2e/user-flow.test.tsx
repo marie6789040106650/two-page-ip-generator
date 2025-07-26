@@ -82,7 +82,7 @@ describe('End-to-End User Flow Tests', () => {
     ;(FormDataManager.loadFromStorage as any).mockReturnValue(completeFormData)
     ;(FormDataManager.isEmptyFormData as any).mockReturnValue(false)
     ;(FormDataManager.getFormDataSummary as any).mockReturnValue(`${completeFormData.storeName} - ${completeFormData.storeCategory} - ${completeFormData.storeLocation}`)
-    ;(FormDataManager.validateAndNormalizeFormData as any).mockImplementation((data) => data)
+    ;(FormDataManager.validateAndNormalizeFormData as any).mockImplementation((data: any) => data)
     
     // Mock btoa/atob for encoding tests
     global.btoa = global.btoa || ((str) => Buffer.from(str).toString('base64'))

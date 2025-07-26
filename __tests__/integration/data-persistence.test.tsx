@@ -228,7 +228,7 @@ describe('Data Persistence Integration', () => {
       
       // 4. Generate summary
       ;(FormDataManager.getFormDataSummary as any).mockReturnValue('测试店铺 - 餐饮 - 北京市朝阳区')
-      const summary = FormDataManager.getFormDataSummary(validated)
+      const summary = FormDataManager.getFormDataSummary(validated!)
       expect(summary).toBe('测试店铺 - 餐饮 - 北京市朝阳区')
     })
 
@@ -310,9 +310,9 @@ describe('Data Persistence Integration', () => {
       }
       
       const migratedData = {
+        ...FormDataManager.getDefaultFormData(),
         storeName: '测试店铺',
-        storeCategory: '餐饮',
-        ...FormDataManager.getDefaultFormData()
+        storeCategory: '餐饮'
       }
       
       ;(FormDataManager.validateAndNormalizeFormData as any).mockReturnValue(migratedData)

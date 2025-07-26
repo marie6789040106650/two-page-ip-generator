@@ -197,7 +197,7 @@ export const ColorContrast = {
   },
 
   // Calculate contrast ratio
-  getContrastRatio: (color1: [number, number, number], color2: [number, number, number]): number => {
+  getContrastRatio(color1: [number, number, number], color2: [number, number, number]): number {
     const l1 = this.getRelativeLuminance(...color1);
     const l2 = this.getRelativeLuminance(...color2);
     const lighter = Math.max(l1, l2);
@@ -206,11 +206,11 @@ export const ColorContrast = {
   },
 
   // Check if contrast meets WCAG standards
-  meetsWCAGStandard: (
+  meetsWCAGStandard(
     color1: [number, number, number],
     color2: [number, number, number],
     level: 'AA' | 'AAA' = 'AA'
-  ): boolean => {
+  ): boolean {
     const ratio = this.getContrastRatio(color1, color2);
     return level === 'AA' ? ratio >= 4.5 : ratio >= 7;
   },
@@ -225,7 +225,7 @@ export const ReducedMotion = {
   },
 
   // Apply animation only if motion is not reduced
-  conditionalAnimation: (animationClass: string): string => {
+  conditionalAnimation(animationClass: string): string {
     return this.prefersReducedMotion() ? '' : animationClass;
   },
 };

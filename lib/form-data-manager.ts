@@ -175,7 +175,7 @@ export class FormDataManager {
    * 压缩表单数据以减少URL长度
    */
   private static compressFormData(data: FormData): Record<string, string> {
-    const keyMap: Record<keyof FormData, string> = {
+    const keyMap: Partial<Record<keyof FormData, string>> = {
       storeName: 'sn',
       storeCategory: 'sc',
       storeLocation: 'sl',

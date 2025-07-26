@@ -160,7 +160,7 @@ describe('useFormData', () => {
     }
 
     act(() => {
-      result.current.setExpandedKeywords(mockKeywords)
+      result.current.setExpandedKeywords(mockKeywords as any)
     })
 
     expect(result.current.expandedKeywords).toEqual(mockKeywords)

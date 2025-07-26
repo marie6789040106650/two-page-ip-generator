@@ -115,7 +115,7 @@ export function preloadCriticalResources(): void {
     });
 
     // Preload critical fonts
-    const criticalFonts = [
+    const criticalFonts: string[] = [
       // Add any critical font URLs here
     ];
 
