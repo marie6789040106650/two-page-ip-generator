@@ -25,31 +25,31 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
-# Check if npm is installed
-if ! command -v npm &> /dev/null; then
-    echo "❌ npm is not installed"
+# Check if pnpm is installed
+if ! command -v pnpm &> /dev/null; then
+    echo "❌ pnpm is not installed"
     exit 1
 fi
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-npm ci
+pnpm install --frozen-lockfile
 
 # Run type checking
 echo "🔍 Running type checking..."
-npm run type-check
+pnpm run type-check
 
 # Run linting
 echo "🔍 Running linting..."
-npm run lint
+pnpm run lint
 
 # Run tests
 echo "🧪 Running tests..."
-npm run test:run
+pnpm run test:run
 
 # Build the application
 echo "🏗️ Building application..."
-npm run build:production
+pnpm run build:production
 
 # Docker deployment (if Docker is available)
 if command -v docker &> /dev/null; then
@@ -90,7 +90,7 @@ health_check() {
 # Start the application (for local deployment)
 if [ "$ENVIRONMENT" = "local" ]; then
     echo "🚀 Starting application locally..."
-    npm start &
+    pnpm start &
     
     # Wait for the application to start
     sleep 10

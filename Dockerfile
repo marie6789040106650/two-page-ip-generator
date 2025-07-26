@@ -7,8 +7,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+COPY package.json pnpm-lock.yaml* ./
+RUN corepack enable pnpm && pnpm install --prod --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM base AS builder
@@ -21,7 +21,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
 
 # Build the application
-RUN npm run build
+RUN corepack enable pnpm && pnpm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner

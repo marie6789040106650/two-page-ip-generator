@@ -17,7 +17,7 @@
 ### 环境要求
 
 - Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
+- pnpm 包管理器
 
 ### 安装
 
@@ -27,13 +27,13 @@ git clone <repository-url>
 cd two-page-ip-generator
 
 # 安装依赖
-npm install
+pnpm install
 
 # 复制环境变量文件
 cp .env.example .env.local
 
 # 启动开发服务器
-npm run dev
+pnpm dev
 ```
 
 访问 [http://localhost:3000](http://localhost:3000) 查看应用。
@@ -69,26 +69,26 @@ two-page-ip-generator/
 
 ```bash
 # 开发
-npm run dev              # 启动开发服务器
-npm run build           # 构建生产版本
-npm run start           # 启动生产服务器
+pnpm dev              # 启动开发服务器
+pnpm build           # 构建生产版本
+pnpm start           # 启动生产服务器
 
 # 代码质量
-npm run lint            # 运行 ESLint
-npm run lint:fix        # 自动修复 lint 问题
-npm run type-check      # TypeScript 类型检查
+pnpm lint            # 运行 ESLint
+pnpm lint:fix        # 自动修复 lint 问题
+pnpm type-check      # TypeScript 类型检查
 
 # 测试
-npm run test            # 运行测试
-npm run test:run        # 运行测试（CI 模式）
-npm run test:ui         # 运行测试 UI
+pnpm test            # 运行测试
+pnpm test:run        # 运行测试（CI 模式）
+pnpm test:ui         # 运行测试 UI
 
 # 构建分析
-npm run build:analyze   # 分析打包大小
-npm run build:production # 生产环境构建
+pnpm build:analyze   # 分析打包大小
+pnpm build:production # 生产环境构建
 
 # 清理
-npm run clean           # 清理构建文件
+pnpm clean           # 清理构建文件
 ```
 
 ## 🏗️ 技术栈
@@ -191,13 +191,13 @@ docker run -p 3000:3000 two-page-ip-generator
 
 ```bash
 # 运行所有测试
-npm run test
+pnpm test
 
 # 运行特定测试
-npm run test -- form-section
+pnpm test -- form-section
 
 # 查看测试覆盖率
-npm run test -- --coverage
+pnpm test -- --coverage
 ```
 
 ## 📊 性能优化
@@ -258,10 +258,10 @@ A: 检查 Tailwind CSS 配置，确保所有样式类都被正确编译。
 
 ```bash
 # 启用详细日志
-DEBUG=* npm run dev
+DEBUG=* pnpm dev
 
 # 启用性能监控
-NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true npm run dev
+NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING=true pnpm dev
 ```
 
 ## 📞 支持
