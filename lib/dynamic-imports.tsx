@@ -13,17 +13,17 @@ const LoadingSpinner = () => (
   </div>
 );
 
-// Error component for dynamic import failures
-const ErrorFallback = ({ error }: { error: Error }) => (
-  <div className="flex items-center justify-center p-4 text-red-600">
-    <p>加载组件失败: {error.message}</p>
-  </div>
-);
+// Error component for dynamic import failures (unused but kept for reference)
+// const ErrorFallback = ({ error }: { error: Error }) => (
+//   <div className="flex items-center justify-center p-4 text-red-600">
+//     <p>加载组件失败: {error.message}</p>
+//   </div>
+// );
 
 /**
  * Create a dynamically imported component with loading and error states
  */
-export function createDynamicComponent<T = {}>(
+export function createDynamicComponent<T = Record<string, unknown>>(
   importFn: () => Promise<{ default: ComponentType<T> }>,
   options: {
     loading?: () => React.ReactElement;

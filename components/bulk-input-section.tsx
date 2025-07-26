@@ -9,8 +9,8 @@ interface BulkInputSectionProps {
 }
 
 export const BulkInputSection: React.FC<BulkInputSectionProps> = ({
-  formData,
-  setFormData
+  formData: _formData,
+  setFormData: _setFormData
 }) => {
   // This is a placeholder component for bulk input functionality
   // In the original project, this would handle bulk input operations

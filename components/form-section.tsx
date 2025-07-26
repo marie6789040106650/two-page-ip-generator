@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 
 import { ArrowRight, Settings } from "lucide-react"
 import { FormData, ExpandedKeywords } from "@/lib/types"
-import { CHAT_MODELS, getAvailableChatModels } from "@/lib/models"
+import { getAvailableChatModels } from "@/lib/models"
 import { useKeywordStats } from "@/hooks/use-keyword-stats"
 import { useKeywordField } from "@/hooks/use-keyword-field-improved"
 import { BulkInputSection } from "./bulk-input-section"

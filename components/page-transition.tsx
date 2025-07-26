@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface PageTransitionProps {
   children: React.ReactNode
@@ -13,19 +13,19 @@ interface PageTransitionProps {
  */
 export function PageTransition({ children }: PageTransitionProps) {
   const [isLoading, setIsLoading] = useState(false)
-  const [loadingText, setLoadingText] = useState('正在加载...')
+  const [loadingText] = useState('正在加载...')
   const pathname = usePathname()
 
   useEffect(() => {
-    // 监听路由变化
-    const handleStart = () => {
-      setIsLoading(true)
-      setLoadingText('正在跳转...')
-    }
+    // 监听路由变化 (functions kept for reference but not used)
+    // const handleStart = () => {
+    //   setIsLoading(true)
+    //   setLoadingText('正在跳转...')
+    // }
 
-    const handleComplete = () => {
-      setIsLoading(false)
-    }
+    // const handleComplete = () => {
+    //   setIsLoading(false)
+    // }
 
     // 模拟路由事件（Next.js App Router 没有直接的路由事件）
     // 这里我们通过 pathname 变化来检测路由变化
@@ -322,7 +322,7 @@ export function SaveIndicator({ status, className = '' }: SaveIndicatorProps) {
  * 网络状态指示器
  */
 export function NetworkStatusIndicator() {
-  const [isOnline, setIsOnline] = useState(true)
+  const [, setIsOnline] = useState(true)
   const [showOfflineMessage, setShowOfflineMessage] = useState(false)
 
   useEffect(() => {

@@ -97,7 +97,7 @@ export default function FormPageContent() {
       saveToStorage()
       setSaveStatus('saved')
       setTimeout(() => setSaveStatus('idle'), 2000)
-    } catch (error) {
+    } catch {
       setSaveStatus('error')
       setTimeout(() => setSaveStatus('idle'), 3000)
     }

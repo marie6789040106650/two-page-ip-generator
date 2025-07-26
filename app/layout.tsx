@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { preloadCriticalComponents, addResourceHints } from '@/lib/dynamic-imports'
-import { preloadCriticalResources, reportWebVitals } from '@/lib/performance'
+import { preloadCriticalResources } from '@/lib/performance'
 import { structuredData } from '@/lib/seo'
 
 const inter = Inter({ 

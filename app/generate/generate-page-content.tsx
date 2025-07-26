@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BannerPlaceholder } from '@/components/banner-placeholder'
 import { ContentPlaceholder } from '@/components/content-placeholder'
 import { FormDataManager } from '@/lib/form-data-manager'
@@ -20,7 +20,7 @@ interface GeneratePageContentProps {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function GeneratePageContent({ searchParams }: GeneratePageContentProps) {
+export default function GeneratePageContent({ searchParams: _searchParams }: GeneratePageContentProps) {
   const router = useRouter()
   const [formData, setFormData] = useState<CustomFormData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -43,11 +43,7 @@ export default function GeneratePageContent({ searchParams }: GeneratePageConten
     }, 500)
   }
 
-  useEffect(() => {
-    loadFormData()
-  }, [searchParams])
-
-  const loadFormData = async () => {
+  const loadFormData = useCallback(async () => {
     try {
       setIsLoading(true)
       setHasDataError(false)
@@ -84,7 +80,11 @@ export default function GeneratePageContent({ searchParams }: GeneratePageConten
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    loadFormData()
+  }, [loadFormData])
 
   const handleBackToForm = () => {
     setIsNavigating(true)

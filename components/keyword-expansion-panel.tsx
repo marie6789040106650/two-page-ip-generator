@@ -14,7 +14,7 @@ interface KeywordExpansionPanelProps {
 export const KeywordExpansionPanel: React.FC<KeywordExpansionPanelProps> = ({
   type,
   keywords,
-  currentValue,
+  currentValue: _currentValue,
   onKeywordClick,
   onMouseLeave,
   onMouseEnter

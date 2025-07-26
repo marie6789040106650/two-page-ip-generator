@@ -304,7 +304,7 @@ export function getActiveModels(): AIModel[] {
 
 // 根据价格排序模型（从低到高）
 export function getModelsByPrice(category?: 'chat' | 'image' | 'multimodal'): AIModel[] {
-  let models = category ? getModelsByCategory(category) : [...CHAT_MODELS, ...IMAGE_MODELS];
+  const models = category ? getModelsByCategory(category) : [...CHAT_MODELS, ...IMAGE_MODELS];
   return models.sort((a, b) => {
     const priceA = a.pricing ? a.pricing.input + a.pricing.output : 0;
     const priceB = b.pricing ? b.pricing.input + b.pricing.output : 0;
@@ -379,7 +379,7 @@ export function getApiKey(provider: string): string | null {
     // 使用 eval 来避免 webpack 静态分析
     const configManager = eval('require')('@/lib/config-manager');
     return configManager.getApiKey(provider);
-  } catch (error) {
+  } catch {
     // 降级到环境变量
     const envName = getModelApiKeyEnvName(provider);
     return process.env[envName] || null;
@@ -469,22 +469,22 @@ export function selectOptimalModel(taskType: 'fast' | 'long_context' | 'multimod
   }
 }
 
-// 检查API密钥是否有效（不是占位符）
-function isValidApiKey(key: string | null): boolean {
-  if (!key) return false;
-  
-  // 检查是否是占位符
-  const placeholders = [
-    'your_openai_key_here',
-    'your_anthropic_key_here',
-    'your_google_key_here',
-    'your_siliconflow_key_here',
-    'sk-placeholder',
-    'placeholder'
-  ];
-  
-  return !placeholders.includes(key.toLowerCase()) && key.length > 10;
-}
+// 检查API密钥是否有效（不是占位符）- 暂时未使用
+// function isValidApiKey(key: string | null): boolean {
+//   if (!key) return false;
+//   
+//   // 检查是否是占位符
+//   const placeholders = [
+//     'your_openai_key_here',
+//     'your_anthropic_key_here',
+//     'your_google_key_here',
+//     'your_siliconflow_key_here',
+//     'sk-placeholder',
+//     'placeholder'
+//   ];
+//   
+//   return !placeholders.includes(key.toLowerCase()) && key.length > 10;
+// }
 
 // 稳定的模型优先级配置 - 基于你的实际API密钥
 export function getStableModelPriority(): AIModel[] {
