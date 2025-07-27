@@ -1,0 +1,472 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Word文档样式 - 完整的Markdown支持 */
+.word-document-style {
+  font-family: 'Times New Roman', serif;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* 标题样式 */
+.word-document-style .word-h1,
+.word-document-style h1 {
+  font-size: 18pt;
+  font-weight: bold;
+  text-align: center;
+  margin: 12pt 0 6pt 0;
+  page-break-after: avoid;
+  border-bottom: none;
+}
+
+.word-document-style .word-h2,
+.word-document-style h2 {
+  font-size: 16pt;
+  font-weight: bold;
+  margin: 12pt 0 6pt 0;
+  page-break-after: avoid;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3pt;
+}
+
+.word-document-style .word-h3,
+.word-document-style h3 {
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 6pt 0 4pt 0;
+  page-break-after: avoid;
+}
+
+.word-document-style .word-h4,
+.word-document-style h4 {
+  font-size: 12pt;
+  font-weight: bold;
+  margin: 6pt 0 3pt 0;
+  page-break-after: avoid;
+}
+
+.word-document-style .word-h5,
+.word-document-style h5 {
+  font-size: 11pt;
+  font-weight: bold;
+  margin: 3pt 0 3pt 0;
+  page-break-after: avoid;
+}
+
+.word-document-style .word-h6,
+.word-document-style h6 {
+  font-size: 10pt;
+  font-weight: bold;
+  margin: 3pt 0 3pt 0;
+  page-break-after: avoid;
+  color: #666;
+}
+
+/* 段落样式 */
+.word-document-style .word-paragraph,
+.word-document-style p {
+  font-size: 11pt;
+  margin-bottom: 6pt;
+  text-indent: 0.74cm;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+/* 列表样式 */
+.word-document-style .word-ul,
+.word-document-style ul {
+  margin: 6pt 0 12pt 0.74cm;
+  padding-left: 0.74cm;
+  list-style-type: disc;
+}
+
+.word-document-style .word-ol,
+.word-document-style ol {
+  margin: 6pt 0 12pt 0.74cm;
+  padding-left: 0.74cm;
+  list-style-type: decimal;
+}
+
+.word-document-style .word-li,
+.word-document-style li {
+  margin-bottom: 3pt;
+  text-indent: 0;
+}
+
+/* 嵌套列表 */
+.word-document-style ul ul,
+.word-document-style ol ol,
+.word-document-style ul ol,
+.word-document-style ol ul {
+  margin: 3pt 0 3pt 0.5cm;
+}
+
+.word-document-style ul ul {
+  list-style-type: circle;
+}
+
+.word-document-style ul ul ul {
+  list-style-type: square;
+}
+
+/* 表格样式 */
+.word-document-style .word-table,
+.word-document-style table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12pt 0;
+  border: 1px solid #000;
+  font-size: 10pt;
+}
+
+.word-document-style .word-th,
+.word-document-style th {
+  border: 1px solid #000;
+  padding: 6pt;
+  text-align: left;
+  vertical-align: top;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.word-document-style .word-td,
+.word-document-style td {
+  border: 1px solid #000;
+  padding: 6pt;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* 代码样式 */
+.word-document-style .word-code,
+.word-document-style code {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  background-color: #f5f5f5;
+  padding: 1pt 3pt;
+  border-radius: 2pt;
+  border: 1px solid #ddd;
+}
+
+.word-document-style .word-pre,
+.word-document-style pre {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3pt;
+  padding: 8pt;
+  margin: 6pt 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.word-document-style pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* 引用样式 */
+.word-document-style .word-blockquote,
+.word-document-style blockquote {
+  margin: 6pt 0 6pt 1cm;
+  padding: 6pt 12pt;
+  border-left: 3pt solid #ccc;
+  background-color: #f9f9f9;
+  font-style: italic;
+  color: #666;
+}
+
+/* 强调样式 */
+.word-document-style .word-strong,
+.word-document-style strong {
+  font-weight: bold;
+}
+
+.word-document-style .word-em,
+.word-document-style em {
+  font-style: italic;
+}
+
+.word-document-style .word-del,
+.word-document-style del {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 链接样式 */
+.word-document-style .word-link,
+.word-document-style a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.word-document-style a:hover {
+  color: #004499;
+}
+
+/* 图片样式 */
+.word-document-style .word-img,
+.word-document-style img {
+  max-width: 100%;
+  height: auto;
+  margin: 6pt 0;
+  border: 1px solid #ddd;
+  border-radius: 3pt;
+}
+
+/* 分割线样式 */
+.word-document-style .word-hr,
+.word-document-style hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 12pt 0;
+  height: 1px;
+}
+
+/* 任务列表样式 */
+.word-document-style .word-checkbox,
+.word-document-style input[type="checkbox"] {
+  margin-right: 6pt;
+  transform: scale(1.2);
+}
+
+.word-document-style .task-list-item {
+  list-style: none;
+  margin-left: -0.74cm;
+}
+
+/* 数学公式样式 */
+.word-document-style .katex {
+  font-size: 1.1em;
+}
+
+.word-document-style .katex-display {
+  margin: 12pt 0;
+  text-align: center;
+}
+
+/* 代码高亮样式 */
+.word-document-style .hljs {
+  background: #f8f8f8;
+  color: #333;
+}
+
+.word-document-style .hljs-comment,
+.word-document-style .hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.word-document-style .hljs-keyword,
+.word-document-style .hljs-selector-tag,
+.word-document-style .hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.word-document-style .hljs-number,
+.word-document-style .hljs-literal,
+.word-document-style .hljs-variable,
+.word-document-style .hljs-template-variable,
+.word-document-style .hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.word-document-style .hljs-string,
+.word-document-style .hljs-doctag {
+  color: #d14;
+}
+
+.word-document-style .hljs-title,
+.word-document-style .hljs-section,
+.word-document-style .hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+/* 表格条纹样式 */
+.word-document-style table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* 脚注样式 */
+.word-document-style .footnote {
+  font-size: 9pt;
+  color: #666;
+  border-top: 1px solid #ccc;
+  margin-top: 12pt;
+  padding-top: 6pt;
+}
+
+/* 键盘按键样式 */
+.word-document-style kbd {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3pt;
+  box-shadow: 0 1pt 0 rgba(0,0,0,0.2);
+  color: #333;
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  line-height: 1;
+  padding: 2pt 4pt;
+  white-space: nowrap;
+}
+
+/* 标记高亮样式 */
+.word-document-style mark {
+  background-color: #ffff00;
+  padding: 1pt 2pt;
+}
+
+/* 上标下标样式 */
+.word-document-style sup {
+  font-size: 8pt;
+  vertical-align: super;
+}
+
+.word-document-style sub {
+  font-size: 8pt;
+  vertical-align: sub;
+}
+
+/* 水印样式 */
+.watermark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .word-document-style {
+    padding: 16px;
+  }
+  
+  .word-document-style h1 {
+    font-size: 16pt;
+  }
+  
+  .word-document-style h2 {
+    font-size: 14pt;
+  }
+  
+  .word-document-style h3 {
+    font-size: 12pt;
+  }
+  
+  .word-document-style p {
+    font-size: 10pt;
+    text-indent: 0.5cm;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .word-document-style {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  
+  .watermark-overlay {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .word-document-style h1,
+  .word-document-style h2,
+  .word-document-style h3 {
+    page-break-after: avoid;
+  }
+  
+  .word-document-style p,
+  .word-document-style li {
+    page-break-inside: avoid;
+  }
+  
+  .word-document-style table {
+    page-break-inside: avoid;
+  }
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

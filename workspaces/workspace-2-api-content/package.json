@@ -1,0 +1,32 @@
+{
+  "name": "workspace-2-api-content",
+  "version": "1.0.0",
+  "description": "API集成和内容生成工作区",
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start -p 3002",
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "openai": "^4.20.0",
+    "redis": "^4.6.0",
+    "zod": "^3.22.0",
+    "remark": "^15.0.0",
+    "remark-html": "^16.0.0",
+    "node-cache": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^14.0.0",
+    "jest": "^29.7.0"
+  }
+}

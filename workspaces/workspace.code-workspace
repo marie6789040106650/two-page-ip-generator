@@ -1,0 +1,99 @@
+{
+  "folders": [
+    {
+      "name": "🎨 工作区1-UI表单",
+      "path": "./workspace-1-ui-form"
+    },
+    {
+      "name": "🤖 工作区2-API内容",
+      "path": "./workspace-2-api-content"
+    },
+    {
+      "name": "🎨 工作区3-HTML渲染",
+      "path": "./workspace-3-html-rendering"
+    },
+    {
+      "name": "📄 工作区4-HTML导出",
+      "path": "./workspace-4-html-export"
+    },
+    {
+      "name": "📚 项目文档",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "eslint.workingDirectories": [
+      "workspace-1-ui-form",
+      "workspace-2-api-content",
+      "workspace-3-html-rendering",
+      "workspace-4-html-export"
+    ],
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true
+    },
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "ms-vscode.vscode-typescript-next",
+      "formulahendry.auto-rename-tag",
+      "christian-kohler.path-intellisense"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "启动所有工作区",
+        "type": "shell",
+        "command": "./start-all-workspaces.sh",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "停止所有工作区",
+        "type": "shell",
+        "command": "./stop-all-workspaces.sh",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "快速测试",
+        "type": "shell",
+        "command": "./quick-test.sh",
+        "group": "test",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}

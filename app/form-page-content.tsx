@@ -177,18 +177,23 @@ export default function FormPageContent() {
         return
       }
 
-      // Save to storage before navigation for backup
+      // Save to storage before API call for backup
       setSaveStatus('saving')
       saveToStorage()
       setSaveStatus('saved')
 
-      // Add a small delay to show loading state and save feedback
-      await new Promise(resolve => setTimeout(resolve, 800))
+      // Call API to generate content
+      const apiResponse = await fetch('/api/generate-content', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
 
-      // Encode form data for URL with enhanced error handling
-      const encodedData = encodeForUrl()
-      if (!encodedData) {
-        const errorMsg = '数据编码失败，请重试'
+      if (!apiResponse.ok) {
+        const errorData = await apiResponse.json().catch(() => ({}))
+        const errorMsg = errorData.error || `API调用失败 (${apiResponse.status})`
         setError(errorMsg)
         setErrorFeedbackMessage(errorMsg)
         setShowErrorFeedback(true)
@@ -197,10 +202,12 @@ export default function FormPageContent() {
         return
       }
 
-      // Validate encoded data can be decoded properly
-      const testDecode = FormDataManager.decodeFromUrl(encodedData)
-      if (!testDecode) {
-        const errorMsg = '数据验证失败，请重试'
+      const apiResult = await apiResponse.json()
+      
+      // Encode form data for URL with enhanced error handling
+      const encodedData = encodeForUrl()
+      if (!encodedData) {
+        const errorMsg = '数据编码失败，请重试'
         setError(errorMsg)
         setErrorFeedbackMessage(errorMsg)
         setShowErrorFeedback(true)

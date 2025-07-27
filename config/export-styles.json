@@ -1,0 +1,121 @@
+{
+  "document": {
+    "page": {
+      "size": "A4",
+      "orientation": "portrait",
+      "margins": {
+        "top": 2.54,
+        "bottom": 2.54,
+        "left": 3.17,
+        "right": 3.17
+      }
+    },
+    "fonts": {
+      "title": {
+        "name": "Source Han Serif SC",
+        "fallback": "Microsoft YaHei",
+        "size": 18,
+        "bold": true,
+        "color": "#000000"
+      },
+      "subtitle": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 12,
+        "bold": false,
+        "italic": true,
+        "color": "#000000"
+      },
+      "heading1": {
+        "name": "Source Han Serif SC",
+        "fallback": "Microsoft YaHei",
+        "size": 16,
+        "bold": true,
+        "color": "#000000"
+      },
+      "heading2": {
+        "name": "Source Han Serif SC",
+        "fallback": "Microsoft YaHei",
+        "size": 14,
+        "bold": true,
+        "color": "#000000"
+      },
+      "heading3": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 12,
+        "bold": true,
+        "color": "#000000"
+      },
+      "body": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 11,
+        "bold": false,
+        "color": "#000000"
+      },
+      "emphasis": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 11,
+        "bold": true,
+        "color": "#000000"
+      },
+      "footer": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 10,
+        "bold": false,
+        "italic": true,
+        "color": "#000000"
+      },
+      "caption": {
+        "name": "Source Han Sans SC",
+        "fallback": "Microsoft YaHei",
+        "size": 10,
+        "bold": false,
+        "color": "#000000"
+      }
+    },
+    "spacing": {
+      "lineHeight": 1.5,
+      "titleSpacing": {
+        "before": 12,
+        "after": 6
+      },
+      "heading1Spacing": {
+        "before": 12,
+        "after": 6
+      },
+      "heading2Spacing": {
+        "before": 6,
+        "after": 4
+      },
+      "heading3Spacing": {
+        "before": 3,
+        "after": 3
+      },
+      "paragraphSpacing": {
+        "before": 0,
+        "after": 6
+      },
+      "captionSpacing": {
+        "before": 3,
+        "after": 6
+      }
+    },
+    "indentation": {
+      "firstLine": 0.74
+    },
+    "alignment": {
+      "title": "center",
+      "subtitle": "center",
+      "heading1": "left",
+      "heading2": "left",
+      "heading3": "left",
+      "body": "left",
+      "caption": "center",
+      "footer": "center"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "workspaceId": "workspace-1-ui-form",
+  "port": 3001,
+  "status": "ready",
+  "lastUpdate": "2025-07-27T18:05:07Z",
+  "services": {
+    "devServer": {
+      "running": false,
+      "url": "http://localhost:3001",
+      "startTime": null
+    }
+  },
+  "currentTask": "所有功能开发完成，准备部署",
+  "dependencies": {
+    "workspace-2": {
+      "required": true,
+      "apiEndpoint": "http://localhost:3002/api/generate-content",
+      "status": "unknown"
+    }
+  },
+  "messages": []
+}

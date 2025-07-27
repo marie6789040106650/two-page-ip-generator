@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { BannerPlaceholder } from '@/components/banner-placeholder'
 import { ContentPlaceholder } from '@/components/content-placeholder'
+import { EmbeddedDisplay } from '@/components/embedded-display'
 import { FormDataManager } from '@/lib/form-data-manager'
 import { DataErrorBoundary, NetworkErrorBoundary } from '@/components/error-boundary'
 import {
@@ -107,26 +108,38 @@ export default function GeneratePageContent({ searchParams: _searchParams }: Gen
     }, 1500)
   }
 
-  const handleExportContent = () => {
-    if (!formData) return
-
-    const content = generateExportContent(formData)
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = `${formData.name || '老板'}_IP打造方案.txt`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    URL.revokeObjectURL(url)
-
-    setShowSuccessFeedback(true)
-    setFeedbackMessage('方案已导出')
-    setTimeout(() => {
-      setShowSuccessFeedback(false)
-    }, 2000)
+  const handleViewDisplay = () => {
+    setIsNavigating(true)
+    router.push('/display')
   }
+
+  // 模拟的方案内容
+  const generatedContent = `
+# ${formData?.storeName || '店铺名称'} 老板IP打造方案
+
+## 一、项目概述
+
+本方案基于您提供的店铺信息，为您量身定制专业的老板IP打造策略。
+
+## 二、品牌定位分析
+
+### 2.1 店铺基础信息
+- **店铺名称**：${formData?.storeName || '待填写'}
+- **经营品类**：${formData?.storeCategory || '待填写'}
+- **店铺位置**：${formData?.storeLocation || '待填写'}
+- **经营时长**：${formData?.businessDuration || '待填写'}
+
+### 2.2 核心优势分析
+${formData?.storeFeatures || '店铺特色待完善'}
+
+### 2.3 老板个人特色
+- **老板姓氏**：${formData?.ownerName || '待填写'}老板
+- **个人特色**：${formData?.ownerFeatures || '个人特色待完善'}
+
+---
+
+*本方案由星光传媒AI智能生成，专注于服务本地实体商家的IP内容机构*
+`
 
   const generateExportContent = (data: CustomFormData): string => {
     return `
@@ -215,32 +228,70 @@ ${data.platforms?.join(', ') || ''}
 
       <NetworkErrorBoundary>
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-          {/* Header */}
+          {/* Action Bar - 与原项目保持一致的样式 */}
           <div className="bg-white shadow-sm border-b">
-            <div className="max-w-4xl mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold text-gray-800">
-                  IP打造方案
-                </h1>
-                <div className="flex space-x-3">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-6">
+                <div className="flex-1">
+                  <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
+                    {formData?.storeName || "店铺名称"} - 老板IP打造方案
+                  </h2>
+                  <p className="text-sm lg:text-base text-gray-600">
+                    由星光传媒专业团队为您量身定制 · 智能生成 · 专业可靠
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 lg:gap-4 w-full lg:w-auto">
                   <Button
                     variant="outline"
+                    size="default"
                     onClick={handleBackToForm}
-                    className="hover-lift"
+                    className="flex-1 lg:flex-none min-w-[120px] h-11 text-sm font-medium border-gray-300 hover:bg-gray-50 transition-colors hover-lift"
                   >
-                    返回编辑
+                    <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    修改信息
                   </Button>
+                  
+                  {/* 重新生成下拉菜单 */}
+                  <div className="relative">
+                    <Button
+                      variant="outline"
+                      size="default"
+                      onClick={handleRegenerateContent}
+                      className="flex-1 lg:flex-none min-w-[120px] h-11 text-sm font-medium border-orange-300 text-orange-700 hover:bg-orange-50 transition-colors hover-lift"
+                    >
+                      <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      重新生成
+                      <svg className="h-4 w-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </Button>
+                  </div>
+
                   <Button
-                    onClick={handleRegenerateContent}
-                    className="hover-lift"
+                    onClick={handleViewDisplay}
+                    disabled={!formData}
+                    className="flex-1 lg:flex-none min-w-[120px] h-11 text-sm font-medium bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white disabled:opacity-50 disabled:cursor-not-allowed hover-lift transition-all duration-300"
                   >
-                    重新生成
+                    <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    查看方案
                   </Button>
+
                   <Button
                     onClick={handleExportContent}
-                    className="hover-lift"
+                    disabled={!formData}
+                    className="flex-1 lg:flex-none min-w-[120px] h-11 text-sm font-medium bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed hover-lift transition-all duration-300"
                   >
-                    导出方案
+                    <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    导出
                   </Button>
                 </div>
               </div>
@@ -257,20 +308,28 @@ ${data.platforms?.join(', ') || ''}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <span className="text-sm text-gray-500">姓名：</span>
-                    <span className="ml-2 font-medium">{formData.name}</span>
+                    <span className="text-sm text-gray-500">店铺名称：</span>
+                    <span className="ml-2 font-medium">{formData.storeName}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">行业：</span>
-                    <span className="ml-2 font-medium">{formData.industry}</span>
+                    <span className="text-sm text-gray-500">店铺品类：</span>
+                    <span className="ml-2 font-medium">{formData.storeCategory}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">目标受众：</span>
-                    <span className="ml-2 font-medium">{formData.targetAudience}</span>
+                    <span className="text-sm text-gray-500">店铺位置：</span>
+                    <span className="ml-2 font-medium">{formData.storeLocation}</span>
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500">核心价值：</span>
-                    <span className="ml-2 font-medium">{formData.coreValue}</span>
+                    <span className="text-sm text-gray-500">经营时长：</span>
+                    <span className="ml-2 font-medium">{formData.businessDuration}</span>
+                  </div>
+                  <div className="md:col-span-2">
+                    <span className="text-sm text-gray-500">店铺特色：</span>
+                    <span className="ml-2 font-medium">{formData.storeFeatures}</span>
+                  </div>
+                  <div className="md:col-span-2">
+                    <span className="text-sm text-gray-500">老板特色：</span>
+                    <span className="ml-2 font-medium">{formData.ownerName}老板 - {formData.ownerFeatures}</span>
                   </div>
                 </div>
               </div>
@@ -286,14 +345,15 @@ ${data.platforms?.join(', ') || ''}
               </div>
             </div>
 
-            {/* Content Section */}
+            {/* Content Section - 嵌入式展示 */}
             <div className="mb-8">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
                 IP打造方案详情
               </h2>
-              <div className="hover-lift">
-                <ContentPlaceholder />
-              </div>
+              <EmbeddedDisplay 
+                formData={formData}
+                isGenerating={false} // 开发阶段设为false，显示模拟内容
+              />
             </div>
           </div>
         </div>

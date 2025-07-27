@@ -1,0 +1,25 @@
+{
+  "lastCheck": "",
+  "ports": {
+    "3001": {
+      "assigned": "workspace-1-ui-form",
+      "occupied": false,
+      "pid": null
+    },
+    "3002": {
+      "assigned": "workspace-2-api-content",
+      "occupied": false,
+      "pid": null
+    },
+    "3003": {
+      "assigned": "workspace-3-html-rendering",
+      "occupied": false,
+      "pid": null
+    },
+    "3004": {
+      "assigned": "workspace-4-html-export",
+      "occupied": false,
+      "pid": null
+    }
+  }
+}

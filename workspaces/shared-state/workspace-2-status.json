@@ -1,0 +1,20 @@
+{
+  "workspaceId": "workspace-2-api-content",
+  "port": 3002,
+  "status": "running",
+  "lastUpdate": "2025-07-27T18:06:16Z",
+  "services": {
+    "devServer": {
+      "running": false,
+      "url": "http://localhost:3002",
+      "startTime": null
+    },
+    "apiEndpoints": {
+      "/api/generate-content": "ready",
+      "/api/health": "ready"
+    }
+  },
+  "currentTask": "✅ API服务完全正常，缓存功能工作正常",
+  "dependencies": {},
+  "messages": []
+}

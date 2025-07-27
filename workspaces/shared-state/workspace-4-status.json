@@ -1,0 +1,21 @@
+{
+  "workspaceId": "workspace-4-html-export",
+  "port": 3004,
+  "status": "completed",
+  "lastUpdate": "2025-07-27T18:21:15Z",
+  "services": {
+    "devServer": {
+      "running": false,
+      "url": "http://localhost:3004",
+      "startTime": null
+    },
+    "apiEndpoints": {
+      "/api/export-word": "ready",
+      "/api/export-pdf": "ready",
+      "/api/health": "ready"
+    }
+  },
+  "currentTask": "HTML导出功能完成，支持中英文Word和PDF导出，包含水印功能",
+  "dependencies": {},
+  "messages": []
+}

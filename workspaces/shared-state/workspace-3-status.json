@@ -1,0 +1,27 @@
+{
+  "workspaceId": "workspace-3-html-rendering",
+  "port": 3003,
+  "status": "production-ready",
+  "lastUpdate": "2025-07-27T18:22:55Z",
+  "services": {
+    "devServer": {
+      "running": false,
+      "url": "http://localhost:3003",
+      "startTime": null
+    }
+  },
+  "currentTask": "完整Markdown语法支持，生产就绪",
+  "dependencies": {
+    "workspace-2": {
+      "required": true,
+      "apiEndpoint": "http://localhost:3002/api/generate-content",
+      "status": "unknown"
+    },
+    "workspace-4": {
+      "required": true,
+      "apiEndpoint": "http://localhost:3004/api/export-word",
+      "status": "unknown"
+    }
+  },
+  "messages": []
+}
